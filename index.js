@@ -16,12 +16,13 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json());
 
- app.get('/AddressBook/:accountId', function (req,res){
-     connection.query('select * from Account where id =' + req.accountId, function(err,result){
+ app.get('/AddressBooks/', function (req,res){
+     connection.query('select AddressBook.name, AddressBook.id as id from Account join AddressBook on Account.id = AddressBook.accountId where accountId =' + req.accountId, function(err,result){
         if (err){
             console.log(err);
         } else {
             console.log(result);
+            res.send(result);
         }
      });
  });
