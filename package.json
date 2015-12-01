@@ -1,0 +1,30 @@
+{
+  "name": "express-api",
+  "version": "1.0.0",
+  "description": "express api",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnyduval/express-api-workshop.git"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "addressbook"
+  ],
+  "author": "Johny Duval",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnyduval/express-api-workshop/issues"
+  },
+  "homepage": "https://github.com/johnyduval/express-api-workshop#readme"
+}
