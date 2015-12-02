@@ -65,6 +65,34 @@ app.delete ('/AddressBooks/:id', function(req, res){
         res.send("The ID was deleted!");
 });
 
+app.put ('/AddressBooks/:id', function(req,res){
+    connection.query("update AddressBook set name = '" + req.body.name + "' where id = " + req.params.id, function(err, result){
+        res.send("The ID was edited");
+        if(err) throw (err);
+    });
+});
+
+//NOT DONE #7
+app.post('/Entries', function(req, res){
+
+    if (req.body.accountId === req.accountId){
+        if(req.body.firstName){
+          connection.query("Insert into Entry set firstName= '" + req.body.firstName + "', lastName= '" + req.body.lastName + "', birthday= '" + req.body.birthday + "', addressBookId= " + req.body.addressBookId, function (err, result){
+            res.send("Yay!");
+            //console.log(result);
+            if (err){
+                res.status(400).send('You have an error 1!');
+            }
+          });
+        }  else {
+        res.status(404).send('You have an error 2!');    
+        }
+    } else {
+        res.status(404).send('You have an error 3!');
+    }
+});
+
+
 var server = app.listen(process.env.PORT, process.env.IP, function() {
     var host = server.address().address;
     var port = server.address().port;
