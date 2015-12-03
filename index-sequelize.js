@@ -100,7 +100,7 @@ app.post('/AddressBooks', function(req, res) {
         res.json(book);    
     }).catch(function(err) {
         console.log(err);
-        res.send('error');
+        res.status(404).send('Not Found');
     });
 });
 
@@ -115,6 +115,19 @@ app.delete('/Addressbooks/:id', function(req, res){
         res.json(book);
     });
 });
+
+app.put('/AddressBooks/:id', function(req,res){
+    
+    AddressBook.update({
+        name: req.body.name    
+        },
+        {where: {
+            id: req.params.id}
+        }).then(function(book){
+            res.send(book);
+        });
+});
+
 
 var server = app.listen(process.env.PORT, process.env.IP, function() {
     var host = server.address().address;
